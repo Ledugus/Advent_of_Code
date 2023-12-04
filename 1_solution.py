@@ -4,7 +4,7 @@ def step_1():
     for line in open("1_input.txt"):
         digits = [int(ch) for ch in line if ch.isdigit()]
         total += (10*(digits[0]) + digits[-1])
-    print(total)
+    return total
 
 
 def step_2():
@@ -25,7 +25,7 @@ def step_2():
                 except:
                     pass
         total += (10*(digits[0]) + digits[-1])
-    print(total)
+    return total
 
 
 step_2()

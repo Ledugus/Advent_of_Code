@@ -22,7 +22,7 @@ def step_1():
             total_ids += current
 
         current += 1
-    print(total_ids)
+    return total_ids
 
 
 def get_minimum_set_power(tirages):
@@ -46,7 +46,7 @@ def step_2():
         tirages = line.split(": ")[1]
 
         total_powers += get_minimum_set_power(tirages)
-    print(total_powers)
+    return total_powers
 
 
 print(get_minimum_set_power(
