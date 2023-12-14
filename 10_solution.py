@@ -56,4 +56,56 @@ def step_1(filename):
     return len(cycle) // 2
 
 
-print(step_1('10_input.txt'))
+def step_2(filename):
+
+    grid, s_pos = get_matrix(filename)
+
+    count = 1
+    current_pos = (s_pos[0]-1, s_pos[1])
+    origin = (1, 0)
+    cycle = [s_pos]
+    while current_pos not in cycle:
+        cycle.append(current_pos)
+
+        row, col = current_pos
+        count += 1
+        next_pos_list = next[grid[row][col]]
+
+        rel_row, rel_col = next_pos_list[1-next_pos_list.index(origin)]
+        print(rel_row, rel_col)
+        origin = (-rel_row, -rel_col)
+        current_pos = (row+rel_row, col+rel_col)
+        print("new current pos", current_pos)
+    count = 0
+    for x in range(len(grid)):
+        inside = False
+        last_turn = ""
+        for y in range(len(grid[0])):
+            if (x, y) in cycle:
+
+                char = grid[x][y]
+                if char == "S":
+                    char = "J"
+                if char == "-":
+                    continue
+                if char == "|":
+                    inside = not inside
+                elif char in ["F", "L"]:
+                    last_turn = char
+                elif char == "J":
+                    if last_turn == "F":
+                        inside = not inside
+                        last_turn = ""
+                elif char == "7":
+                    if last_turn == "L":
+                        inside = not inside
+                        last_turn = ""
+
+            elif inside:
+                count += 1
+            print((x, y), "inside :", inside, "last turn :", last_turn)
+
+    return count
+
+
+print(step_2('10_input.txt'))
