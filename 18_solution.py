@@ -41,6 +41,7 @@ def step_1(filename):
     previous_cols = nodes_dict[row]
     list_bounds = previous_cols
     previous_row = row
+    pairs = []
     # passer en revue les lignes pour calculer l'aire
     for row in list_rows[1:]:
         # ajouter les aires des anciens rectangles (hauteur * largeur)
