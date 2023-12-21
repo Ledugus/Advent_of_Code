@@ -1,4 +1,3 @@
-
 class Module:
     def __init__(self, outputs: list, inputs: list) -> None:
         self.outputs = outputs
@@ -44,19 +43,6 @@ def get_modules(filename):
     for line in f.readlines():
         type_and_name, outputs = line.strip().split(" -> ")
         outputs = outputs.split(", ")
-        if type_and_name == "broadcaster":
-            output_dict[type_and_name] = BroadCaster(outputs)
-            continue
-        if type_and_name[0] == "%":
-            output_dict[type_and_name[1:]] = FlipFlop(
-                type_and_name[1:], outputs)
-        if type_and_name[0] == "&":
-            output_dict[type_and_name[1:]] = Conjonction(
-                type_and_name[1:], outputs)
-    for module_name, module_output_list in output_dict.items():
-        for module_output in module_output_list:
-            input_dict[module_output].append()
-    return output_dict
 
 
 def print_modules(modules_dict):
