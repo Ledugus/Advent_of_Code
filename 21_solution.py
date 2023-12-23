@@ -76,7 +76,6 @@ def dijkstra(grid: np.ndarray, start_pos, dist_limit: int) -> int:
 
 def step_1(filename):
     grid, s_pos = get_matrix(filename)
-
     return dijkstra(grid, s_pos, 64)
 
 
