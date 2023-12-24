@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 
 def get_all_hails_vectors(filename, coo: int):
@@ -7,49 +8,28 @@ def get_all_hails_vectors(filename, coo: int):
             map(int, x.split(", ")))[:2], (line.strip().split(" @ ")))) for line in f.readlines()]
 
 
-class Rational:
-    def __init__(self, n: int, m: int = 1) -> None:
-        self.n, self.m = self.get_reduced_form(n, m)
-
-    @staticmethod
-    def get_reduced_form(n: int, m: int):
-        return n//math.gcd(n, m), m // math.gcd(n, m)
-
-    def __eq__(self, __value: 'Rational') -> bool:
-        return self.n == __value.n and self.m == __value.m
-
-    def __repr__(self) -> str:
-        return str(self.n) if self.m == 1 else str(self.n/self.m)
+def are_colinear(v1, v2):
+    return abs(v1[0]/v2[0] - v1[1]/v2[1]) < (10**(-10))
 
 
 class Line:
-    def __init__(self, a: int, b: int, c: int) -> None:
+    def __init__(self, origin: tuple, dir: tuple) -> None:
         """Forme ax + by + c = 0"""
-        self.a = a
-        self.b = b
-        self.c = c
-        try:
-            self.m = -b/a
-        except ZeroDivisionError:
-            self.m = math.inf
+        self.origin = np.array(origin)
+        self.dir = np.array(dir)
 
     def get_intersection_point(self, other: 'Line'):
-        if self.m == other.m:
-            return self.c == other.c
+        if are_colinear(self.dir, other.dir):
 
-        x = ((self.b*other.c - self.c*other.b) /
-             (self.a * other.b - self.b * other.a))
-        y = ((other.a*self.c-self.a*other.c) /
-             (self.a*other.b-other.a*self.b))
-        return (x, y)
+            return are_colinear(self.origin-other.origin, self.dir)
+        return
 
     def __repr__(self) -> str:
-        return f"Line {self.a}x + {self.b}y + {self.c} = 0"
+        return f"Line from {self.origin} longs {self.dir} direction"
 
 
 def intersect_in_boundary(min: int, max: int, line1: Line, line2: Line):
     point = line1.get_intersection_point(line2)
-
     if type(point) == bool:
         return point
 
@@ -78,4 +58,6 @@ def step_1(filename):
     return hails_states
 
 
+l1 = Line()
+print()
 print(step_1('24_test.txt'))
