@@ -38,4 +38,3 @@ def step_2(filename):
 
 print(step_1("2024/1_input.txt"))
 print(step_2("2024/1_input.txt"))
-
