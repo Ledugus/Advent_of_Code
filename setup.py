@@ -26,9 +26,9 @@ def step_2(filename):
     return 0
 """
     )
-    f.write(f"\nprint(step_1('{number:02d}_test.txt'))\n")
-    f.write(f"\nprint(step_2('{number:02d}_test.txt'))\n")
+    f.write(f"\nprint(step_1('2024/{number:02d}_test.txt'))\n")
+    f.write(f"\nprint(step_2('2024/{number:02d}_test.txt'))\n")
     f.close()
 
 
-create_files_day(25)
+create_files_day(2)
