@@ -5,7 +5,7 @@ def create_files_day(number):
     f.close()
     f = open(f"2024/{number:02d}_solution.py", "w")
     f.write(
-        f"""import numpy as np
+        """import numpy as np
 
 def step_1(filename):
     f = open(filename)
@@ -16,7 +16,7 @@ def step_1(filename):
 """
     )
     f.write(
-        f"""
+        """
 
 def step_2(filename):
     f = open(filename)
@@ -26,9 +26,9 @@ def step_2(filename):
     return 0
 """
     )
-    f.write(f"\nprint(step_1('2024/{number:02d}_test.txt'))\n")
-    f.write(f"\nprint(step_2('2024/{number:02d}_test.txt'))\n")
+    f.write(f"\nprint(step_1('2024/{number:02d}_input.txt'))\n")
+    f.write(f"\nprint(step_2('2024/{number:02d}_input.txt'))\n")
     f.close()
 
 
-create_files_day(2)
+create_files_day(3)
