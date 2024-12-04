@@ -31,4 +31,4 @@ def step_2(filename):
     f.close()
 
 
-create_files_day(3)
+create_files_day(4)
