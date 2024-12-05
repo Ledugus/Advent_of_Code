@@ -10,9 +10,10 @@ def create_files_day(number):
 def step_1(filename):
     f = open(filename)
     
+    count = 0
 
     f.close()
-    return 0
+    return count
 """
     )
     f.write(
@@ -21,9 +22,10 @@ def step_1(filename):
 def step_2(filename):
     f = open(filename)
     
+    count = 0
 
     f.close()
-    return 0
+    return count
 """
     )
     f.write(f"\nprint(step_1('2024/{number:02d}_input.txt'))\n")
@@ -31,4 +33,4 @@ def step_2(filename):
     f.close()
 
 
-create_files_day(4)
+create_files_day(5)
