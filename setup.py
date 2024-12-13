@@ -35,4 +35,4 @@ print(step_2('2024/{number:02d}_input.txt'))"""
     f.close()
 
 
-create_files_day(12)
+create_files_day(13)
