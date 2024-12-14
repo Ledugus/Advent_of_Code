@@ -5,11 +5,11 @@ def in_bound(i, j, height, width):
     return 0 <= i < height and 0 <= j < width
 
 
-def print_matrix(matrix, delimiter="", special_pos=None):
+def print_matrix(matrix, delimiter="", special_pos=[]):
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
-            if (i, j) == special_pos:
-                print("X", end=delimiter)
+            if (i, j) in special_pos:
+                print(".", end=delimiter)
             else:
                 print(str(matrix[i][j]), end=delimiter)
         print()
