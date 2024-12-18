@@ -30,7 +30,6 @@ def step_1(filename):
     current = (start, 0)  # (position, facing)
     distances[current] = 0
     visited = set([])
-    t = time()
     while end not in visited:
         position, facing = current
         # check directions forward -> update distance
@@ -64,8 +63,6 @@ def step_1(filename):
             [key_ for key_ in distances if key_ not in visited],
             key=lambda key_: distances.get(key_, np.inf),
         )
-        t_1 = time()
-        t = t_1
     min_dist = min([distances.get((end, dir), np.inf) for dir in range(4)])
     return min_dist
 
@@ -87,7 +84,6 @@ def step_2(filename):
             map_line.append(char)
         map.append(map_line)
     map = np.array(map)
-    print(map)
     f.close()
 
     # implement dijkstra
@@ -156,14 +152,11 @@ def step_2(filename):
         for v in value:
             opti_paths.add(v[0])
             to_visit.append(v)
-    print(opti_paths)
-    print_matrix(map, special_pos=opti_paths)
     return len(opti_paths) + 1
 
 
-# print(step_1("2024/16_test.txt"))
-# print(step_1("2024/16_input.txt"))
+print(step_1("2024/16_test.txt"))
+print(step_1("2024/16_input.txt"))
 
-# print(step_2("2024/16_test.txt"))
+print(step_2("2024/16_test.txt"))
 print(step_2("2024/16_input.txt"))
-

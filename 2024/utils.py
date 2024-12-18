@@ -6,15 +6,15 @@ def in_bound(i, j, height, width):
     return 0 <= i < height and 0 <= j < width
 
 
-def print_matrix(matrix, delimiter="", special_pos=[]):
+def print_matrix(matrix, default=".", special="#", delimiter="", special_pos=[]):
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
             if (i, j) in special_pos:
-                print("O", end=delimiter)
+                print(special, end=delimiter)
             else:
                 print(str(matrix[i][j]), end=delimiter)
         print()
-    print("\n")
+    print()
 
 
 def get_matrix_from(filename):
