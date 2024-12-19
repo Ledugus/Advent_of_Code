@@ -1,11 +1,11 @@
 def create_files_day(number):
-    f = open(f"2024/{number:02d}_input.txt", "w")
-    f.close()
-    f = open(f"2024/{number:02d}_test.txt", "w")
-    f.close()
-    f = open(f"2024/{number:02d}_solution.py", "w")
-    f.write(
-        f"""import numpy as np
+    with open(f"2024/{number:02d}_input.txt", "w") as f:
+        f.write("")
+    with open(f"2024/{number:02d}_test.txt", "w") as f:
+        f.write("")
+    with open(f"2024/{number:02d}_solution.py", "w") as f:
+        f.write(
+            f"""import numpy as np
 from utils import *
 
 def step_1(filename):
@@ -31,8 +31,7 @@ print(step_1('2024/{number:02d}_input.txt'))
 
 print(step_2('2024/{number:02d}_test.txt'))
 print(step_2('2024/{number:02d}_input.txt'))"""
-    )
-    f.close()
+        )
 
 
-create_files_day(13)
+create_files_day(19)
