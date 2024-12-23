@@ -30,6 +30,36 @@ def get_matrix_from(filename):
     return map
 
 
+def run_dijkstra(wall_pos, grid_size):
+    DIRECTIONS = [(0, 1), (-1, 0), (0, -1), (1, 0)]  # East  # North  # West  # South
+    distances = {}
+    current = (0, 0)  # (position, facing)
+    distances[current] = 0
+    visited = set([])
+    end = (grid_size - 1, grid_size - 1)
+    while end not in visited:
+        # check directions forward -> update distance
+        for dir in DIRECTIONS:
+            pos_forward = (current[0] + dir[0], current[1] + dir[1])
+            if not in_bound(pos_forward[0], pos_forward[1], grid_size, grid_size):
+                continue
+            if (
+                pos_forward not in wall_pos
+                and distances.get(pos_forward, np.inf) > distances[current] + 1
+            ):
+                distances[pos_forward] = distances[current] + 1
+
+        visited.add(current)
+        candidates = [pos for pos in distances if pos not in visited]
+        if candidates == []:
+            return end in visited
+        current = min(
+            candidates,
+            key=lambda key_: distances.get(key_, np.inf),
+        )
+    return distances[end]
+
+
 class Position:
     """Represents a position on a 2D array"""
 
