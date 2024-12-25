@@ -41,4 +41,4 @@ print(step_2('2024/{number:02d}_input.txt'))"""
         )
 
 
-create_files_day(22)
+create_files_day(25)
